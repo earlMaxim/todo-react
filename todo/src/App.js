@@ -15,10 +15,14 @@ function App() {
   return (
 
     <div className="App">
-      <Addnote newNote={newNote =>{
-        setNotes([...notes, newNote])
+      <Addnote newNote={value =>{
+        setNotes([...notes, value])
       }}></Addnote>
       <Todolist notes={notes}
+                deleteTodo={indexDelete=> {const newTodos = notes
+                            .filter((_, index) => index !== indexDelete); 
+                            setNotes(newTodos);
+                            }}
       ></Todolist>
     </div>
  

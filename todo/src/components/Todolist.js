@@ -1,28 +1,23 @@
 import React, { useState } from 'react'
 // import {Todoitem} from './Todoitem'
 
-export const Todolist = ({notes}) =>{
+export const Todolist = ({notes,deleteTodo }) =>{
 
-    const [localNotes, setNotes] = useState(notes)
-
-    function deleteTodo(indexdelete){
-        const newTodos = localNotes
-              .filter((_, index) => index !== indexdelete); 
-              setNotes(newTodos);
-    }
-    function changeTodo(indexchange){
-        console.log(indexchange)
+    function changeTodo(indexchang, note){
+        console.log(indexchang)
+        console.log(note)
+        let x = document.querySelector('.add-input')
+        x.value = note;
+        // setTimeout(deleteTodo(indexchang),0)
     }
     function checkTodo(element){
-        console.log(element)
         element.closest('.todo-item').classList.toggle('checked')
-        // document.q
     }
-    
 
     return(
+       
         <ul className="todo-list">
-            {localNotes.map((note, index)=>(
+            {notes.map((note, index)=>(
                 <li 
                     className="todo-item"
                     key={index}
@@ -32,7 +27,7 @@ export const Todolist = ({notes}) =>{
                 {note}
             <div className='note-btns'>
                 <button className='btn btn-delete'
-                        onClick={() => {changeTodo(index);}}>Change</button>
+                        onClick={() => {changeTodo(index, note);}}>Change</button>
                 <button className='btn btn-delete'  
                         onClick={() => {deleteTodo(index);}}>
                 Delete</button>
@@ -43,18 +38,3 @@ export const Todolist = ({notes}) =>{
         </ul>
     )
 }
-
-
-            //     <li 
-            //         className="todo-item"
-            //         key={note.id}
-            // >
-            //     {note}
-            // <div className='note-btns'>
-            //     <button className='btn btn-delete'>Change</button>
-            //     <button className='btn btn-delete'>Delete</button>
-            //  </div>
-            // </li>
-
-
-              //    return <Todoitem note={note} key={note.id}></Todoitem>
