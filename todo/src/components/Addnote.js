@@ -1,13 +1,20 @@
 import React, { useState } from 'react'
 
-export const Addnote = ({newNote}) =>{
+export const Addnote = ({some, newNote}) =>{
 
     const [value, setValue] = useState('')
-
+    let text=  {
+        note:'',
+        checked:false,
+        extranote:[],
+        add:false
+    }
+  
     // btn add note
     const addNote = () =>{
         if(value.trim()){
-            newNote(value)
+            text.note=value;
+            newNote(text)
             console.log(value)
             setValue('')
         }
